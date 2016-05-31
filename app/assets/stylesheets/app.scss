@@ -8,12 +8,16 @@ a, a:visited {
 	color: #0c0c0c;
 }
 
-h1 {
+h1, h2, {
 	text-align: center;
 }
 
 .body {
 	padding: 0 0 80px 80px;	
+}
+
+.center {
+	text-align: center;
 }
 
 header {
@@ -63,6 +67,7 @@ header {
 	color: #1F1F38;
 	font-size: 20px;
 	border: none;
+	margin-top: 10px;
 }
 
 .flash {
@@ -87,6 +92,9 @@ footer {
 	padding-left: 40px;
 }
 
+.contact-info {
+	text-align: center;
+}
 
 
 

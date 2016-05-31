@@ -12,8 +12,8 @@
 		<% if session[:user_id] %>
 			<%= link_to 'Log Out', logout_path, method: :delete %>
 		<% end %>
-		<%= link_to 'See all Users', users_path %>
-		<%= link_to 'Search for Homes', homes_search_path %>
+		<%= link_to 'See all Houses', all_homes_path %>
+		<%= link_to 'Search for Houses', homes_search_path %>
 		<%= link_to 'Profile', profile_path %> 
 	</header>
 	<% flash.each do |key, value| %>

@@ -1,19 +1,25 @@
 class HomesController < ApplicationController
-  before_action :seller_instance, except: [:search, :search_results]
+  before_action :user_instance, except: [:search, :search_results, :index_all]
   before_action :home_instance, only: [:show, :edit, :update, :destroy]
 
   def index
     @homes = Home.all_homes
   end
 
+  def index_all
+    @homes = Home.all_homes
+    @current_user = current_user
+  end
+
   def show
+    @current_user = current_user
   end
 
   def search
   end
 
   def search_results
-    @homes = Home.search_results(search_params)
+    @homes = Home.search_results(search_params, current_user)
     render :search_results
   end
 
@@ -22,10 +28,10 @@ class HomesController < ApplicationController
   end
 
   def create
-    @home = @seller.homes.new(home_params)
+    @home = @user.homes.new(home_params)
     if @home.save
       flash[:success] = 'Home created successfully'
-      redirect_to seller_home_path(@seller, @home)
+      redirect_to user_home_path(@user, @home)
     else
       flash.now[:danger] = @home.errors.full_messages.join('<br/>').html_safe
       render :new, layout: true
@@ -38,7 +44,7 @@ class HomesController < ApplicationController
   def update
     if @home.update(home_params)
       flash[:success] = 'Home updated successfully'
-      redirect_to seller_home_path(@seller, @home)
+      redirect_to user_home_path(@user, @home)
     else
       flash.now[:danger] = @home.errors.full_messages.join('<br/>').html_safe
       render :update
@@ -48,7 +54,7 @@ class HomesController < ApplicationController
   def destroy
     @home.destroy
     flash[:success] = "Home Deleted"
-    redirect_to seller_homes_path(@seller)
+    redirect_to user_homes_path(@user)
   end
 
   private
@@ -62,11 +68,11 @@ class HomesController < ApplicationController
   end
 
   def home_instance
-    @home = @seller.homes.find(params[:id])
+    @home = @user.homes.find(params[:id])
   end
 
-  def seller_instance
-    @seller = Seller.find(params[:seller_id])
+  def user_instance
+    @user = User.find(params[:user_id])
   end
 
 end

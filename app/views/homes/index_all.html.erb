@@ -1,0 +1,12 @@
+<h1>All Homes</h1>
+<% @homes.each do |home| %>
+	<% user = User.find(home.user_id) %>
+	<%= render 'home', home: home %>
+	<div class='center'>
+		<% if user == @current_user %>
+			'<%= home.title %>' is your listing! Don't like how it looks? <%= link_to 'Edit it here', edit_user_home_path(@current_user, home) %>
+		<% else %>
+			'<%= home.title %>' is being sold by <%= link_to user.name, user_path(user) %> 
+		<% end %>
+	</div>
+<% end %>

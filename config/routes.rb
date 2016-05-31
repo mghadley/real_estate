@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'homes/search'
   get '/login', to: 'sessions#new'
   get '/signup', to: 'users#new'
+  get 'all_homes', to: 'homes#index_all'
 
   post '/login', to: 'sessions#create'
   post '/sing_up', to: 'users#create'

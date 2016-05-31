@@ -1,14 +1,23 @@
 <h1><%= @user.name %></h1>
-<div>
+<div class='contact-info'>
 	Phone: <%= @user.phone_number %>
 	<br>
 	Email: <%= @user.email %>
 </div>
 <hr>
 <% if @user.homes.any? %>
+	<h2>Your listings</h3>
 	<div>
 		<% @user.homes.order(:sold).each do |home| %>
 			<%= render 'homes/home', home: home %>
+			<div class='center'>
+				<%= link_to "Edit '#{home.title}'", edit_user_home_path(@user, home) %>
+				<% if home.address %>
+					| <%= link_to "Edit address for '#{home.title}'", edit_address_path(home.address) %>
+				<% else %>
+					<span><h3><%= link_to "Add an Address for '#{home.title}'", new_address_path(home_id: home.id) %></h3>
+				<% end %>
+			</div>
 		<% end %>
 	</div>
 <% else %>
@@ -17,6 +26,7 @@
 
 <hr>
 
-<%= link_to 'Add a new home', new_user_home_path(@user) %>
-<%= link_to 'Edit your profile', edit_user_path(@user) %>
-
+<footer>
+	<%= link_to 'Add a new home', new_user_home_path(@user) %> |
+	<%= link_to 'Edit your profile', edit_user_path(@user) %>
+</footer>

@@ -1,7 +1,7 @@
 class AddressesController < ApplicationController
 	before_action :address_instance, only: [:show, :edit, :update, :destroy]
 	before_action :home_instance, only: [:update, :show]
-	before_action :seller_instance, only: [:update, :show]
+	before_action :user_instance, only: [:update, :show]
 
   def index
   	@addresses = Address.all
@@ -19,9 +19,9 @@ class AddressesController < ApplicationController
   	@address = Address.new(address_params)
   	binding
   	@home = Home.find(@address.home_id)
-  	@seller = Seller.find(@home.seller_id)
+  	@user = User.find(@home.user_id)
   	if @address.save
-  		redirect_to seller_home_path(@seller, @home)
+  		redirect_to user_home_path(@user, @home)
   	else
   		flash[:danger] = @home.errors.full_messages.join('<br>').html_safe
   		render :new
@@ -43,10 +43,10 @@ class AddressesController < ApplicationController
 
   def destroy
   	@home = Home.find(@address.home_id)
-  	@seller = Seller.find(@home.seller_id)
+  	@user = User.find(@home.user_id)
   	@address.destroy
   	flash[:success] = "Address deleted"
-  	redirect_to seller_home_path(@seller, @home)
+  	redirect_to user_home_path(@user, @home)
   end
 
   private
@@ -63,8 +63,8 @@ class AddressesController < ApplicationController
   	@home = Home.find(@address.home_id)
   end
 
-  def seller_instance
-  	@seller = Seller.find(@home.seller_id)
+  def user_instance
+  	@user = User.find(@home.user_id)
   end
 end
 

@@ -2,7 +2,7 @@
 	<% if home.sold == true %>
 		<h1><%= home.title %> - SOLD</h1>
 	<% else %>
-		<h1><%= home.title %></h1>
+		<h1><%= link_to home.title, user_home_path(User.find(home.user_id), home) %></h1>
 	<% end %>
 	<div><%= home.description %></div>
 	<div>
@@ -14,7 +14,7 @@
 		<br>
 	</div>
 	<% if home.address.nil? %>
-		<div><%= link_to 'Add the address for this home', new_address_path(home_id: home.id) %></div>
+		<div><h3>Address is missing for this home :/</h3></div>
 	<% else %>
 		<h3>Address</h3>
 		<%= link_to address_path(home.address) do %>
@@ -28,9 +28,5 @@
 				<%= home.address.city %>, <%=home.address.state %> <%= home.address.zip %>
 			</div>
 		<% end %>
-	<% end %>
-	<%= form_for [Seller.find(home.seller_id), home] do |f| %>
-		<%= f.hidden_field :sold, value: true %>
-		<%= f.submit 'Mark as Sold', class: 'sold'%>
 	<% end %>
 </div>

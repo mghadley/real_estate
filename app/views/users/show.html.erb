@@ -1,5 +1,5 @@
 <h1><%= @user.name %></h1>
-<div>
+<div class='contact-info'>
 	Phone: <%= @user.phone_number %>
 	<br>
 	Email: <%= @user.email %>
@@ -7,6 +7,7 @@
 <hr>
 <% if @user.homes.any? %>
 	<div>
+		<h2>Listings</h2>
 		<% @user.homes.order(:sold).each do |home| %>
 			<%= render 'homes/home', home: home %>
 		<% end %>
@@ -16,5 +17,3 @@
 <% end %>
 
 <hr>
-
-<%= link_to 'Add a new home for this user', new_user_home_path(@user) %>

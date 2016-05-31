@@ -3,10 +3,10 @@
 		<div>
 			<%= render 'home', home: home %>
 			<div class='dislike'>
-				<div>This home's seller is <%= link_to Seller.find(home.seller_id).name, seller_path(Seller.find(home.seller_id)) %></div>
+				<div>This home's seller is <%= link_to User.find(home.user_id).name, user_path(User.find(home.user_id)) %></div>
 				<div>
 					Don't want to see this home in future searches?
-					<%= form_for [Seller.find(home.seller_id), home] do |f| %>
+					<%= form_for [User.find(home.user_id), home] do |f| %>
 						<%= f.hidden_field :disliked, value: true %>
 						<%= f.submit 'Dislike', class: 'dislike' %>
 					<% end %>
