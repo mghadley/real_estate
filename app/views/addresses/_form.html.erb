@@ -1,0 +1,30 @@
+<div class='form'>
+	<%= form_for @address do |f| %>
+	<div class='form-element'>	
+		<div class='label'><%= f.label :street %></div>
+		<%= f.text_field :street %>
+	</div>
+	<div class='form-element'>
+		<div class='label'><%= f.label :street2, 'Street 2' %></div>
+		<%= f.text_field :street2 %>
+	</div>
+	<div class='form-element'>
+		<div class='label'><%= f.label :city %></div>
+		<%= f.text_field :city %>
+	</div>
+	<div class='form-element'>
+		<div class='label'><%= f.label :state %></div>
+		<%= f.text_field :state %>
+	</div>
+	<div class='form-element'>
+		<div class='label'><%= f.label :zip %></div>
+		<%= f.text_field :zip %>
+	</div>
+		
+		<% if @address.id.nil? %>
+			<%= f.hidden_field :home_id, value: @home.id %>
+		<% end %>
+
+		<%= f.submit class: 'submit'%>
+	<% end %>
+</div>

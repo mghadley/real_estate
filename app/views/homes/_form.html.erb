@@ -1,0 +1,32 @@
+<div class='form'>
+	<%= form_for [@seller, @home] do |f| %>
+		<div class='form-element'>
+			<div class='label'><%= f.label :title %></div>
+			<%= f.text_field :title %>
+		</div>
+		<div class='form-element'>
+			<div class='label'><%= f.label :description %> </div>
+			<%= f.text_area :description %>
+		</div>
+		<div class='form-element'>
+			<div class='label'><%= f.label :sq_ft, 'Square Feet' %></div>
+			<%= f.number_field :sq_ft %>
+		</div>
+		<div class='form-element'>
+			<div class='label'><%= f.label :floors %></div>
+			<%= f.number_field :floors %>
+		</div>
+		<div class='form-element'>
+			<div class='label'><%= f.label :price %></div>
+			<%= f.number_field :price %>
+		</div>
+		<% unless @home.id.nil? %>
+			<div class='form-element'>
+				<%= f.check_box :sold %>
+				<%= f.label :sold %>
+			</div>
+		<% end %>
+
+		<%= f.submit class: 'submit'%>
+	<% end %>
+</div>

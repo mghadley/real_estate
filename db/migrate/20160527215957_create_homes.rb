@@ -1,10 +1,13 @@
 class CreateHomes < ActiveRecord::Migration
   def change
     create_table :homes do |t|
-      t.string :title
+      t.string :title, null: false
       t.string :description
-      t.integer :sq_ft
-      t.integer :floors
+      t.integer :sq_ft, null: false
+      t.integer :floors, null: false
+      t.float :price, null: false
+      t.boolean :sold, default: false
+      t.boolean :disliked, default: false
       t.belongs_to :seller, index: true
 
       t.timestamps null: false

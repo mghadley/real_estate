@@ -1,0 +1,28 @@
+<h1>Search</h1>
+<h3 class='search'>All fields are optional</h3>
+<div class='form search'>
+	<%= form_tag '/homes/search_results' do %>
+		<h3>Square Footage</h3>
+		<div class='form-element'>
+			<%= label_tag 'Min' %>
+			<%= number_field_tag :min_sq_ft %>
+			<%= label_tag 'Max' %>
+			<%= number_field_tag :max_sq_ft %>
+		</div>
+		<hr>
+		<h3>Price</h3>
+		<div class='form-element'>
+			<%= label_tag 'Min' %>
+			<%= number_field_tag :min_price %>
+			<%= label_tag 'Max' %>
+			<%= number_field_tag :max_price %>
+		</div>
+		<hr>
+		<div class='form-element floors'>
+			<%= label_tag 'Number of Floors' %>
+			<%= select_tag :floors, options_for_select(Home.floor_range) %>
+		</div>
+
+		<%= submit_tag 'Search', class: 'submit'%>
+	<% end %>
+</div>

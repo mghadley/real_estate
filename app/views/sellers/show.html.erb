@@ -1,2 +1,22 @@
-<h1>Sellers#show</h1>
-<p>Find me in app/views/sellers/show.html.erb</p>
+<h1><%= @seller.name %></h1>
+<div>
+	Phone: <%= @seller.phone_number %>
+	<br>
+	Email: <%= @seller.email %>
+</div>
+<hr>
+<% if @seller.homes.any? %>
+	<div>
+		<% @seller.homes.order(:sold).each do |home| %>
+			<%= render 'homes/home', home: home %>
+		<% end %>
+	</div>
+<% else %>
+	<h3>This seller has no homes listed</h3>
+<% end %>
+
+<hr>
+
+<%= link_to 'Add a new home for this seller', new_seller_home_path(@seller) %>
+<%= link_to 'Edit', edit_seller_path(@seller) %>
+<%= link_to 'Delete this Seller', seller_path(@seller), method: :delete, data: {confirm: 'Are you sure you want to delete this seller?'} %>

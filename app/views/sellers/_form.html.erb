@@ -1,0 +1,17 @@
+<div class='form'>
+	<%= form_for @seller do |f| %>
+		<div class='form-element'>
+			<div class='label'><%= f.label :name%></div>
+			<%= f.text_field :name %>
+		</div>
+		<div class='form-element'>
+			<div class='label'><%= f.label :phone_number%></div>
+			<%= f.text_field :phone_number %>
+		</div>
+		<div class='form-element'>
+			<div class='label'><%= f.label :email%></div>
+			<%= f.email_field :email %>
+		</div>
+		<%= f.submit class: 'submit'%>
+	<% end %>
+</div>

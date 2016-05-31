@@ -1,2 +1,11 @@
-<h1>Homes#show</h1>
-<p>Find me in app/views/homes/show.html.erb</p>
+<div>
+	<%= render 'home', home: @home %>
+
+	<hr>
+
+	<footer>
+		<div>This home's seller is <%= link_to Seller.find(@home.seller_id).name, seller_path(Seller.find(@home.seller_id)) %></div>
+		<%= link_to 'Edit', edit_seller_home_path(@seller, @home) %>
+		<%= link_to 'Delete', seller_home_path(@seller, @home), method: :delete, data: {confirm: "Are you sure you want to delete this home? This cannot be undone."} %>
+	</footer>
+</div>

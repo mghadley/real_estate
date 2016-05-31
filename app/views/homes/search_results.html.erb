@@ -1,0 +1,20 @@
+<% if @homes.any? %>
+	<% @homes.each do |home| %>
+		<div>
+			<%= render 'home', home: home %>
+			<div class='dislike'>
+				<div>This home's seller is <%= link_to Seller.find(home.seller_id).name, seller_path(Seller.find(home.seller_id)) %></div>
+				<div>
+					Don't want to see this home in future searches?
+					<%= form_for [Seller.find(home.seller_id), home] do |f| %>
+						<%= f.hidden_field :disliked, value: true %>
+						<%= f.submit 'Dislike', class: 'dislike' %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+		<hr>
+	<% end %>
+<% else %>
+	<h1>No homes match your search :/</h1>
+<% end %>

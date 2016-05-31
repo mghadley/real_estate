@@ -1,2 +1,12 @@
-<h1>Addresses#show</h1>
-<p>Find me in app/views/addresses/show.html.erb</p>
+<h1>Address</h1>
+<div>
+	<%= @address.street %>
+	<br>
+	<%= @address.street2 %>
+	<br>
+	<%= @address.city %>, <%=@address.state %> <%= @address.zip %>
+</div>
+
+<%= link_to 'Back to this home', seller_home_path(@seller, @home) %>
+<%= link_to 'Edit', edit_address_path(@address) %>
+<%= link_to 'Delete', address_path(@address), method: :delete, data: {confirm: "Are you sure you want to remove this address? This cannot be undone"} %>

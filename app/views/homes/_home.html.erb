@@ -1,0 +1,36 @@
+<div class='home'>
+	<% if home.sold == true %>
+		<h1><%= home.title %> - SOLD</h1>
+	<% else %>
+		<h1><%= home.title %></h1>
+	<% end %>
+	<div><%= home.description %></div>
+	<div>
+		Square Feet: <%= home.sq_ft %>
+		<br>
+		Floors: <%= home.floors %>
+		<br>
+		Price: $<%= home.price %>
+		<br>
+	</div>
+	<% if home.address.nil? %>
+		<div><%= link_to 'Add the address for this home', new_address_path(home_id: home.id) %></div>
+	<% else %>
+		<h3>Address</h3>
+		<%= link_to address_path(home.address) do %>
+			<div>
+				<%= home.address.street %>
+				<br>
+				<% unless home.address.street2.empty? %>
+					<%= home.address.street2 %>
+					<br>
+				<% end %>
+				<%= home.address.city %>, <%=home.address.state %> <%= home.address.zip %>
+			</div>
+		<% end %>
+	<% end %>
+	<%= form_for [Seller.find(home.seller_id), home] do |f| %>
+		<%= f.hidden_field :sold, value: true %>
+		<%= f.submit 'Mark as Sold', class: 'sold'%>
+	<% end %>
+</div>

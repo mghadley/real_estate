@@ -1,2 +1,19 @@
-<h1>Sellers#index</h1>
-<p>Find me in app/views/sellers/index.html.erb</p>
+<h1>All Sellers</h1>
+
+<div class='body'>
+	<% if Seller.any? %>
+		<% @sellers.each do |seller| %>
+			<div class='seller-div'>
+				<h2 class='seller-name'><%= link_to seller.name, seller_path(seller) %></h2>
+				<br>
+				Homes listed: <%= seller.home_count %>
+			</div>
+		<% end %>
+	<% else %>
+		<h1>No sellers listed yet! <%= link_to 'Add one!', new_seller_path %></h1>
+	<% end %>
+
+	<br>
+
+	<%= link_to 'Create New Seller', new_seller_path %>
+</div>

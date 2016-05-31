@@ -34,9 +34,12 @@ ActiveRecord::Schema.define(version: 20160527220128) do
     t.string   "description"
     t.integer  "sq_ft"
     t.integer  "floors"
+    t.float    "price"
+    t.boolean  "sold",        default: false
+    t.boolean  "disliked",    default: false
     t.integer  "seller_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "homes", ["seller_id"], name: "index_homes_on_seller_id", using: :btree

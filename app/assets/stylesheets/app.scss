@@ -1,0 +1,92 @@
+body {
+	margin: 0;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	padding-bottom: 50px;
+}
+
+a, a:visited {
+	color: #0c0c0c;
+}
+
+h1 {
+	text-align: center;
+}
+
+.body {
+	padding: 0 0 80px 80px;	
+}
+
+header {
+	height: 70px;
+	background-color: #4E4F8D;
+	line-height: 70px;
+	a {
+		display: block;
+		float: right;
+	}
+	a, a:visited {
+		float: right;
+		margin-right: 20px;
+		color: #fff;
+		text-decoration: none;
+	}
+	a:hover {
+		color: #D3A625;
+	}
+}
+
+.logo {
+	font-size: 30px;
+	text-align: left;
+	float: left;
+	margin: 0 0 0 30px;
+}
+
+.form {
+	width: 400px;
+	margin-right: auto;
+	margin-left: auto;
+	border: solid 4px rgba(79,141,78,0.25);
+	padding: 20px;
+	box-shadow: 3px 3px 10px 1px #888888;
+}
+
+.label {
+	width: 150px;
+	display: inline-block;
+	margin-bottom: 10px;
+}
+
+.submit {
+	background-color: rgba(79,141,78,0.5);
+	border-radius: 6px;
+	color: #1F1F38;
+	font-size: 20px;
+	border: none;
+}
+
+.flash {
+	width: 400px;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 20px;
+	margin-top: 20px;
+	padding: 10px 0 10px 0;
+	box-shadow: 3px 3px 10px 1px #888888;
+}
+
+.success {
+	background-color: rgba(0,128,0,0.5);
+}
+
+.danger {
+	background-color: rgba(255,0,0,0.5);
+}
+
+footer {
+	padding-left: 40px;
+}
+
+
+
+

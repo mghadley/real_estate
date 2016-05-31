@@ -7,4 +7,8 @@ Rails.application.routes.draw do
 
   resources :addresses
 
+  get 'homes/search'
+
+  post 'homes/search_results'
+
 end
