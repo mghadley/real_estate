@@ -1,0 +1,22 @@
+<h1><%= @user.name %></h1>
+<div>
+	Phone: <%= @user.phone_number %>
+	<br>
+	Email: <%= @user.email %>
+</div>
+<hr>
+<% if @user.homes.any? %>
+	<div>
+		<% @user.homes.order(:sold).each do |home| %>
+			<%= render 'homes/home', home: home %>
+		<% end %>
+	</div>
+<% else %>
+	<h3>You have not listed any houses for sale</h3>
+<% end %>
+
+<hr>
+
+<%= link_to 'Add a new home', new_user_home_path(@user) %>
+<%= link_to 'Edit your profile', edit_user_path(@user) %>
+

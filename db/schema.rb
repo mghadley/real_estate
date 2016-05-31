@@ -30,27 +30,27 @@ ActiveRecord::Schema.define(version: 20160527220128) do
   add_index "addresses", ["home_id"], name: "index_addresses_on_home_id", using: :btree
 
   create_table "homes", force: :cascade do |t|
-    t.string   "title"
+    t.string   "title",                       null: false
     t.string   "description"
-    t.integer  "sq_ft"
-    t.integer  "floors"
-    t.float    "price"
+    t.integer  "sq_ft",                       null: false
+    t.integer  "floors",                      null: false
+    t.float    "price",                       null: false
     t.boolean  "sold",        default: false
     t.boolean  "disliked",    default: false
-    t.integer  "seller_id"
+    t.integer  "user_id"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
 
-  add_index "homes", ["seller_id"], name: "index_homes_on_seller_id", using: :btree
+  add_index "homes", ["user_id"], name: "index_homes_on_user_id", using: :btree
 
-  create_table "sellers", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "phone_number"
     t.string   "email"
-    t.string   "testimonials"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end

@@ -1,5 +1,5 @@
 <div class='form'>
-	<%= form_for @seller do |f| %>
+	<%= form_for @user do |f| %>
 		<div class='form-element'>
 			<div class='label'><%= f.label :name%></div>
 			<%= f.text_field :name %>
@@ -12,6 +12,16 @@
 			<div class='label'><%= f.label :email%></div>
 			<%= f.email_field :email %>
 		</div>
+		<% unless @user.id %>
+			<div class='form-element'>
+				<div class='label'><%= f.label :password %></div>
+				<%= f.password_field :password %>
+			</div>
+			<div class='form-elemt'>
+				<div class='label'><%= f.label :password_confirmation %></div>
+				<%= f.password_field :password_confirmation %>
+			</div>
+		<% end %>
 		<%= f.submit class: 'submit'%>
 	<% end %>
 </div>

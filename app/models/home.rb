@@ -1,5 +1,5 @@
 class Home < ActiveRecord::Base
-	belongs_to :seller
+	belongs_to :user
 	has_one :address
 	validates_presence_of :title
 	validates :floors, :sq_ft, numericality: { greater_than: 0 }

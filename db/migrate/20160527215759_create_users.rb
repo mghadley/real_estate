@@ -1,10 +1,10 @@
-class CreateSellers < ActiveRecord::Migration
+class CreateUsers < ActiveRecord::Migration
   def change
-    create_table :sellers do |t|
+    create_table :users do |t|
       t.string :name
       t.string :phone_number
       t.string :email
-      t.string :testimonials
+      t.string :password_digest
 
       t.timestamps null: false
     end

@@ -21,7 +21,6 @@ class AddressesController < ApplicationController
   	@home = Home.find(@address.home_id)
   	@seller = Seller.find(@home.seller_id)
   	if @address.save
-  		flash[:success] = "Address added successfully"
   		redirect_to seller_home_path(@seller, @home)
   	else
   		flash[:danger] = @home.errors.full_messages.join('<br>').html_safe
@@ -35,7 +34,7 @@ class AddressesController < ApplicationController
   def update
   	if @address.update(address_params)
   		flash[:success] = "Address updated successfully"
-  		redirect_to address_path()
+  		redirect_to address_path(@address)
   	else
   		flash.now[:danger] = @home.errors.full_messages.join('<br>').html_safe
   		render :edit

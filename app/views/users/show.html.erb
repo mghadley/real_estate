@@ -1,0 +1,20 @@
+<h1><%= @user.name %></h1>
+<div>
+	Phone: <%= @user.phone_number %>
+	<br>
+	Email: <%= @user.email %>
+</div>
+<hr>
+<% if @user.homes.any? %>
+	<div>
+		<% @user.homes.order(:sold).each do |home| %>
+			<%= render 'homes/home', home: home %>
+		<% end %>
+	</div>
+<% else %>
+	<h3>This user has no homes listed</h3>
+<% end %>
+
+<hr>
+
+<%= link_to 'Add a new home for this user', new_user_home_path(@user) %>

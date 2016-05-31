@@ -1,0 +1,19 @@
+<h1>All Users</h1>
+
+<div class='body'>
+	<% if User.any? %>
+		<% @users.each do |user| %>
+			<div class='user-div'>
+				<h2 class='user-name'><%= link_to user.name, user_path(user) %></h2>
+				<br>
+				Homes listed: <%= user.home_count %>
+			</div>
+		<% end %>
+	<% else %>
+		<h1>No users listed yet! <%= link_to 'Add one!', new_user_path %></h1>
+	<% end %>
+
+	<br>
+
+	<%= link_to 'Create New User', new_user_path %>
+</div>
