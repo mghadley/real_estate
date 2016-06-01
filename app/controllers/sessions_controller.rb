@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
   		flash[:success] = "Log in successful"
   		redirect_to profile_path
   	else
+      flash[:danger] = 'Email and/or password incorrect'
   		redirect_to '/login'
   	end
   end
