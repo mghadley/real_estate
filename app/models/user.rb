@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 	has_many :homes
+	has_many :dislikes
 	validates_uniqueness_of :email
 	validates_presence_of :name, :email, :password_digest
 	has_secure_password

@@ -9,8 +9,9 @@ Rails.application.routes.draw do
   get 'all_homes', to: 'homes#index_all'
 
   post '/login', to: 'sessions#create'
-  post '/sing_up', to: 'users#create'
+  post '/signup', to: 'users#create'
   post 'homes/search_results'
+  post '/dislike', to: 'dislikes#create'
   
 	delete '/logout', to: 'sessions#destroy'  
 

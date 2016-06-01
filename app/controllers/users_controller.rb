@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   	if @user.save
       session[:user_id] = @user.id
   		flash[:success] = "Welcome, #{@user.name}"
-  		redirect_to user_path(@user)
+  		redirect_to profile_path
   	else
   		flash[:danger] = @user.errors.full_messages.join('<br/>').html_safe
   		render :new
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-  	params.require(:user).permit(:name, :phone_number, :email, :password, :password_confirmation)
+  	params.require(:user).permit(:name, :phone_number, :email, :password, :password_confirmation, :favorites, :dislikes)
   end
 
   def user_instance

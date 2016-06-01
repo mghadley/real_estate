@@ -7,7 +7,6 @@ class CreateHomes < ActiveRecord::Migration
       t.integer :floors, null: false
       t.float :price, null: false
       t.boolean :sold, default: false
-      t.boolean :disliked, default: false
       t.belongs_to :user, index: true
 
       t.timestamps null: false

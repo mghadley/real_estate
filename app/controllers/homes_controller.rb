@@ -20,6 +20,7 @@ class HomesController < ApplicationController
 
   def search_results
     @homes = Home.search_results(search_params, current_user)
+    @current_user = current_user
     render :search_results
   end
 
